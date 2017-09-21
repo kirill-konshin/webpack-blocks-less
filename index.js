@@ -20,14 +20,14 @@ function less (options) {
     return {
       module: {
         loaders: [
-          {
-            test: context.fileType('text/x-less'),
+          Object.assign({
+            test: /\.less$/,
             loaders: [
               'style-loader',
               options.sourceMap ? 'css-loader?sourceMap' : 'css-loader',
               hasOptions ? 'less-loader?' + JSON.stringify(options) : 'less-loader'
             ]
-          }
+          }, context.match)
         ]
       }
     }
