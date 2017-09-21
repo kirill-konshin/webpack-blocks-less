@@ -12,8 +12,7 @@
   "engines": {
     "node": ">= 4.0"
   },
-  "repository": "andywer/webpack-blocks",
-  "bugs": "https://github.com/andywer/webpack-blocks/issues",
+  "repository": "kirill-konshin/webpack-blocks-less",
   "dependencies": {
     "css-loader": "^0.28.7",
     "less": "^2.7.2",
