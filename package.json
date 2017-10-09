@@ -1,13 +1,15 @@
 {
   "name": "webpack-blocks-less",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Webpack block for Less.",
-  "main": "lib/index",
+  "main": "index",
   "license": "MIT",
-  "author": "Viktor Nikolaev <veikedo@gmail.com>",
+  "author": "Kirill Konshin <kirill.konshin@gmail.com>",
   "scripts": {
-    "test": "standard",
-    "prepublish": "npm test"
+    "test": "standard && ava",
+    "prepublish": "npm test",
+    "start": "webpack-dev-server --config ./example/webpack.config.js",
+    "build": "webpack --config ./example/webpack.config.js"
   },
   "engines": {
     "node": ">= 4.0"
@@ -17,9 +19,18 @@
     "css-loader": "^0.28.7",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "lodash": "^4.17.4",
     "style-loader": "^0.18.2"
   },
   "devDependencies": {
-    "standard": "^10.0.3"
+    "@webpack-blocks/assets": "^1.0.0-rc",
+    "@webpack-blocks/core": "^1.0.0-rc",
+    "ava": "^0.22.0",
+    "babel-core": "^6.26.0",
+    "html-webpack-plugin": "^2.30.1",
+    "standard": "^10.0.3",
+    "webpack": "^3.6.0",
+    "webpack-blocks": "^1.0.0-rc",
+    "webpack-dev-server": "^2.9.1"
   }
 }

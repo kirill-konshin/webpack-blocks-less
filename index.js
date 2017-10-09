@@ -1,3 +1,5 @@
+const omit = require('lodash/omit')
+
 /**
  * Less webpack block.
  *
@@ -14,22 +16,27 @@ module.exports = less
 function less (options) {
   options = options || {}
 
-  const hasOptions = Object.keys(options).length > 0
+  const lessOptions = omit(options, 'minimize')
 
-  return function (context) {
-    return {
-      module: {
-        loaders: [
+  return function (context, util) {
+    return util.addLoader(
+      Object.assign({
+        test: /\.less$/,
+        use: [
+          'style-loader',
           {
-            test: context.fileType('text/x-less'),
-            loaders: [
-              'style-loader',
-              options.sourceMap ? 'css-loader?sourceMap' : 'css-loader',
-              hasOptions ? 'less-loader?' + JSON.stringify(options) : 'less-loader'
-            ]
+            loader: 'css-loader',
+            options: {
+              sourceMap: !!options.sourceMap,
+              minimize: options.minimize
+            }
+          },
+          {
+            loader: 'less-loader',
+            options: lessOptions
           }
         ]
-      }
-    }
+      }, context.match)
+    )
   }
 }
