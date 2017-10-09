@@ -7,7 +7,6 @@
   "author": "Kirill Konshin <kirill.konshin@gmail.com>",
   "scripts": {
     "test": "standard && ava",
-    "prepublish": "npm test",
     "start": "webpack-dev-server --config ./example/webpack.config.js",
     "build": "webpack --config ./example/webpack.config.js"
   },
